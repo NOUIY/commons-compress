@@ -62,7 +62,7 @@ public class DeflateCompressorOutputStream extends CompressorOutputStream<Deflat
     @Override
     public void close() throws IOException {
         try {
-            out.close();
+            super.close();
         } finally {
             deflater.end();
         }
@@ -79,6 +79,7 @@ public class DeflateCompressorOutputStream extends CompressorOutputStream<Deflat
     @SuppressWarnings("resource") // instance variable access
     public void finish() throws IOException {
         out().finish();
+        super.finish();
     }
 
     /**

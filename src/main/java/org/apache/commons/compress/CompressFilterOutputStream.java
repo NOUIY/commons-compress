@@ -26,6 +26,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Abstracts classes that compress or archive an output stream.
@@ -52,6 +53,18 @@ public abstract class CompressFilterOutputStream<T extends OutputStream> extends
     }
 
     /**
+     * Whether this instance was successfully closed.
+     */
+    private final AtomicBoolean closed = new AtomicBoolean();
+    /**
+     * Whether this instance was successfully finished.
+     * <p>
+     * The state transition usually is open, to finished, to closed.
+     * </p>
+     */
+    private boolean finished;
+
+    /**
      * Constructs a new instance without a backing {@link OutputStream}.
      * <p>
      * You must initialize {@code this.out} after construction.
@@ -69,6 +82,54 @@ public abstract class CompressFilterOutputStream<T extends OutputStream> extends
      */
     public CompressFilterOutputStream(final T out) {
         super(out);
+    }
+
+    /**
+     * Check to make sure that this stream has not been closed.
+     *
+     * @throws IOException if the stream is already closed.
+     */
+    protected void checkOpen() throws IOException {
+        if (isClosed()) {
+            throw new IOException("Stream closed");
+        }
+    }
+
+    @Override
+    public void close() throws IOException {
+        if (closed.compareAndSet(false, true)) {
+            // don't propagate more than once.
+            super.close();
+        }
+    }
+
+    /**
+     * Finishes the addition of entries to this stream, without closing it. Additional data can be written, if the format supports it.
+     *
+     * @throws IOException Maybe thrown by subclasses if the user forgets to close the entry.
+     */
+    public void finish() throws IOException {
+        finished = true;
+    }
+
+    /**
+     * Tests whether this instance was successfully closed.
+     *
+     * @return whether this instance was successfully closed.
+     * @since 1.27.0
+     */
+    public boolean isClosed() {
+        return closed.get();
+    }
+
+    /**
+     * Tests whether this instance was successfully finished.
+     *
+     * @return whether this instance was successfully finished.
+     * @since 1.27.0
+     */
+    protected boolean isFinished() {
+        return finished;
     }
 
     /**
@@ -108,7 +169,7 @@ public abstract class CompressFilterOutputStream<T extends OutputStream> extends
      *
      * @param data the data.
      * @return the ASCII bytes.
-     * @exception IOException if an I/O error occurs.
+     * @throws IOException if an I/O error occurs.
      * @see OutputStream#write(byte[])
      */
     public byte[] writeUsAscii(final String data) throws IOException {
@@ -120,7 +181,7 @@ public abstract class CompressFilterOutputStream<T extends OutputStream> extends
      *
      * @param data the data.
      * @return the ASCII bytes.
-     * @exception IOException if an I/O error occurs.
+     * @throws IOException if an I/O error occurs.
      * @see OutputStream#write(byte[])
      */
     public byte[] writeUsAsciiRaw(final String data) throws IOException {
@@ -132,7 +193,7 @@ public abstract class CompressFilterOutputStream<T extends OutputStream> extends
      *
      * @param data the data.
      * @return the ASCII bytes.
-     * @exception IOException if an I/O error occurs.
+     * @throws IOException if an I/O error occurs.
      * @see OutputStream#write(byte[])
      */
     public byte[] writeUtf8(final String data) throws IOException {
