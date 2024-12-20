@@ -55,6 +55,8 @@ The <action> type attribute can be add,update,fix,remove.
       <action type="fix" dev="ggregory" due-to="ddeschenes-1, Gary Gregory">Throw an IllegalArgumentException when a file name or comment in gzip parameters encodes to a byte array with a 0 byte #618.</action>
       <action type="fix" dev="ggregory" due-to="Glavo">Update outdated links in ZipMethod Javadoc #619.</action>
       <action type="fix" dev="ggregory" due-to="Gary Gregory">Deprecate ZipUtil.signedByteToUnsignedInt(byte) in favor of Byte.toUnsignedInt(byte).</action> 
+      <action type="fix" dev="ggregory" due-to="Gary Gregory">ZipArchiveOutputStream.close() does not close its underlying output stream.</action> 
+      <action type="fix" dev="ggregory" due-to="Gary Gregory">ZipArchiveOutputStream.close() does not close its underlying output stream.</action> 
       <!-- ADD -->
       <action type="add" dev="ggregory" due-to="Gary Gregory">Add GzipParameters.getModificationInstant().</action>
       <action type="add" dev="ggregory" due-to="Gary Gregory">Add GzipParameters.setModificationInstant(Instant).</action>
@@ -63,6 +65,9 @@ The <action> type attribute can be add,update,fix,remove.
       <action type="add" dev="ggregory" issue="COMPRESS-638" due-to="vincexjl, Gary Gregory, Piotr P. Karwasz">Add GzipParameters.setFileNameCharset(Charset) and getFileNameCharset() to override the default ISO-8859-1 Charset #602.</action>
       <action type="add" dev="ggregory" due-to="ddeschenes-1, Gary Gregory">Add support for gzip extra subfields, see GzipParameters.setExtra(HeaderExtraField) #604.</action>
       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CompressFilterOutputStream and refactor to use.</action>
+      <action type="add" dev="ggregory" due-to="Gary Gregory">Add ZipFile.stream().</action>
+      <action type="add" dev="ggregory" due-to="Danny Deschenes, Gary Gregory">GzipCompressorInputStream reads the modification time (MTIME) and stores its value incorrectly multiplied by 1,000.</action>
+      <action type="add" dev="ggregory" due-to="Danny Deschenes, Gary Gregory">GzipCompressorInputStream writes the modification time (MTIME) the value incorrectly divided by 1,000.</action>
       <!-- UPDATE -->
       <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">Bump org.apache.commons:commons-parent from 72 to 78 #563, #567, #574, #582, #587, #595.</action>
       <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">Bump com.github.luben:zstd-jni from 1.5.6-4 to 1.5.6-8 #565, #578, #601, #616.</action>
@@ -71,7 +76,8 @@ The <action> type attribute can be add,update,fix,remove.
       <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">Bump com.github.marschall:memoryfilesystem from 2.8.0 to 2.8.1 #577.</action>
       <action type="update" dev="ggregory" due-to="Dependabot, Gary Gregory">Bump org.ow2.asm:asm from 9.7 to 9.7.1 #586.</action>
       <!-- REMOVE -->
-      <action type="remove" dev="ggregory" issue="COMPRESS-638" due-to="vincexjl, Gary Gregory, Piotr P. Karwasz">GzipCompressorOutputStream no longer percent-endcodes in US-ASCII a file name or comment that the Charset in GzipParameters.setFileNameCharset(Charset) cannot encode.</action>     
+      <action type="remove" dev="ggregory" issue="COMPRESS-638" due-to="vincexjl, Gary Gregory, Piotr P. Karwasz">GzipCompressorOutputStream no longer percent-endcodes in US-ASCII a file name or comment that the Charset in GzipParameters.setFileNameCharset(Charset) cannot encode.</action>
+      <action type="update" dev="ggregory" due-to="Gary Gregory">Remove ZstdCompressorOutputStream.toString(), it was misleading by returning the delegate's toString().</action>
     </release>
     <release version="1.27.1" date="2024-08-16" description="This is a feature and maintenance release. Java 8 or later is required.">
      <action type="fix" issue="COMPRESS-686" dev="ggregory" due-to="Richard Blank, Gary Gregory">Compression into BZip2 format has unexpected end of file when using a BufferedOutputStream.</action>

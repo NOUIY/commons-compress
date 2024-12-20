@@ -61,16 +61,6 @@ public abstract class ArchiveOutputStream<E extends ArchiveEntry> extends Compre
     private long bytesWritten;
 
     /**
-     * Whether this instance was successfully closed.
-     */
-    private boolean closed;
-
-    /**
-     * Whether this instance was successfully finished.
-     */
-    private boolean finished;
-
-    /**
      * Constructs a new instance without a backing OutputStream.
      * <p>
      * You must initialize {@code this.out} after construction.
@@ -116,24 +106,6 @@ public abstract class ArchiveOutputStream<E extends ArchiveEntry> extends Compre
         if (isFinished()) {
             throw new IOException("Stream has already been finished.");
         }
-    }
-
-    /**
-     * Check to make sure that this stream has not been closed
-     *
-     * @throws IOException if the stream is already closed
-     * @since 1.27.0
-     */
-    protected void checkOpen() throws IOException {
-        if (isClosed()) {
-            throw new IOException("Stream closed");
-        }
-    }
-
-    @Override
-    public void close() throws IOException {
-        super.close();
-        closed = true;
     }
 
     /**
@@ -199,16 +171,6 @@ public abstract class ArchiveOutputStream<E extends ArchiveEntry> extends Compre
     }
 
     /**
-     * Finishes the addition of entries to this stream, without closing it. Additional data can be written, if the format supports it.
-     *
-     * @throws IOException Maybe thrown by subclasses if the user forgets to close the entry.
-     */
-    @SuppressWarnings("unused") // for subclasses
-    public void finish() throws IOException {
-        finished = true;
-    }
-
-    /**
      * Gets the current number of bytes written to this stream.
      *
      * @return the number of written bytes
@@ -227,26 +189,6 @@ public abstract class ArchiveOutputStream<E extends ArchiveEntry> extends Compre
     @Deprecated
     public int getCount() {
         return (int) bytesWritten;
-    }
-
-    /**
-     * Tests whether this instance was successfully closed.
-     *
-     * @return whether this instance was successfully closed.
-     * @since 1.27.0
-     */
-    protected boolean isClosed() {
-        return closed;
-    }
-
-    /**
-     * Tests whether this instance was successfully finished.
-     *
-     * @return whether this instance was successfully finished.
-     * @since 1.27.0
-     */
-    protected boolean isFinished() {
-        return finished;
     }
 
     /**
