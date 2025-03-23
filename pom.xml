@@ -136,7 +136,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
            - org.apache.commons.compress.compressors.snappy -->
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.17.1</version>
+      <version>1.18.0</version>
     </dependency>
 
     <!-- Pack200 -->
@@ -373,7 +373,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
             <phase>process-test-resources</phase>
             <configuration>
               <target>
-                <untar src="${basedir}/src/test/resources/zstd-tests.tar" dest="${project.build.testOutputDirectory}" />
+                <untar src="${basedir}/src/test/resources/zstd-tests.tar" dest="${project.build.testOutputDirectory}"/>
               </target>
             </configuration>
             <goals>
@@ -445,7 +445,7 @@ Brotli, Zstandard and ar, cpio, jar, tar, zip, dump, 7z, arj.
                 <phase>process-test-resources</phase>
                 <configuration>
                   <target>
-                    <untar src="${basedir}/src/test/resources/zip64support.tar.bz2" dest="${project.build.testOutputDirectory}" compression="bzip2" />
+                    <untar src="${basedir}/src/test/resources/zip64support.tar.bz2" dest="${project.build.testOutputDirectory}" compression="bzip2"/>
                   </target>
                 </configuration>
                 <goals>
