@@ -18,13 +18,13 @@
  */
 package org.apache.commons.compress.archivers.cpio;
 
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class CpioArchiveEntryTest {
     @Test
-    public void testGetHeaderPadCountOverflow() throws Exception {
+    void testGetHeaderPadCountOverflow() throws Exception {
         final CpioArchiveEntry entry = new CpioArchiveEntry(CpioConstants.FORMAT_NEW);
         entry.setName("test name");
         assertThrows(IllegalArgumentException.class, () -> entry.getHeaderPadCount(Long.MAX_VALUE));
