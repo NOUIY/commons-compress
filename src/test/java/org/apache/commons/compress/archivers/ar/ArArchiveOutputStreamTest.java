@@ -32,10 +32,10 @@ import java.util.List;
 import org.apache.commons.compress.AbstractTest;
 import org.junit.jupiter.api.Test;
 
-public class ArArchiveOutputStreamTest extends AbstractTest {
+class ArArchiveOutputStreamTest extends AbstractTest {
 
     @Test
-    public void testLongFileNamesCauseExceptionByDefault() throws IOException {
+    void testLongFileNamesCauseExceptionByDefault() throws IOException {
         final ArArchiveOutputStream ref;
         try (ArArchiveOutputStream outputStream = new ArArchiveOutputStream(new ByteArrayOutputStream())) {
             ref = outputStream;
@@ -47,7 +47,7 @@ public class ArArchiveOutputStreamTest extends AbstractTest {
     }
 
     @Test
-    public void testLongFileNamesWorkUsingBSDDialect() throws Exception {
+    void testLongFileNamesWorkUsingBSDDialect() throws Exception {
         final File file = createTempFile();
         try (ArArchiveOutputStream outputStream = new ArArchiveOutputStream(Files.newOutputStream(file.toPath()))) {
             outputStream.setLongFileMode(ArArchiveOutputStream.LONGFILE_BSD);

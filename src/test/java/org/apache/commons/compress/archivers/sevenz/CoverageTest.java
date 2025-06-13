@@ -23,17 +23,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class CoverageTest {
+class CoverageTest {
 
     @Test
-    public void testCLIInstance() {
+    void testCLIInstance() {
         final CLI foo = new CLI();
         assertNotNull(foo);
         assertThrows(Exception.class, () -> CLI.main(new String[] { "/dev/null/not-there" }));
     }
 
     @Test
-    public void testNidInstance() {
+    void testNidInstance() {
         assertNotNull(new NID());
     }
 }

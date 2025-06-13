@@ -35,10 +35,10 @@ import org.apache.commons.compress.archivers.zip.ZipExtraField;
 import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.junit.jupiter.api.Test;
 
-public class JarArchiveOutputStreamTest extends AbstractTempDirTest {
+class JarArchiveOutputStreamTest extends AbstractTempDirTest {
 
     @Test
-    public void testJarMarker() throws IOException {
+    void testJarMarker() throws IOException {
         final Path testArchive = createTempPath("jar-aostest", ".jar");
         try (JarArchiveOutputStream out = new JarArchiveOutputStream(Files.newOutputStream(testArchive))) {
             final ZipArchiveEntry ze1 = new ZipArchiveEntry("foo/");

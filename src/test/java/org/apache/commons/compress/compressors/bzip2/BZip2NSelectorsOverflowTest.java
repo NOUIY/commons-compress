@@ -27,13 +27,13 @@ import java.nio.file.Files;
 import org.apache.commons.compress.AbstractTest;
 import org.junit.jupiter.api.Test;
 
-public class BZip2NSelectorsOverflowTest extends AbstractTest {
+class BZip2NSelectorsOverflowTest extends AbstractTest {
 
     /**
      * See https://sourceware.org/ml/bzip2-devel/2019-q3/msg00007.html
      */
     @Test
-    public void testShouldDecompressBlockWithNSelectorOverflow() throws Exception {
+    void testShouldDecompressBlockWithNSelectorOverflow() throws Exception {
         final File toDecompress = getFile("lbzip2_32767.bz2");
         try (InputStream is = Files.newInputStream(toDecompress.toPath());
                 BZip2CompressorInputStream in = new BZip2CompressorInputStream(is)) {

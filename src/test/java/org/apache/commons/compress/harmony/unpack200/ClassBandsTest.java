@@ -31,11 +31,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  */
-public class ClassBandsTest extends AbstractBandsTest {
+class ClassBandsTest extends AbstractBandsTest {
 
     public class MockCpBands extends CpBands {
 
-        public MockCpBands(final Segment segment) {
+        MockCpBands(final Segment segment) {
             super(segment);
         }
 
@@ -103,7 +103,7 @@ public class ClassBandsTest extends AbstractBandsTest {
     }
 
     @Test
-    public void testSimple() throws IOException, Pack200Exception {
+    void testSimple() throws IOException, Pack200Exception {
         cpClasses = new String[] { "Class1", "Class2", "Class3", "Interface1", "Interface2" };
         cpDescriptor = new String[0];
         cpUTF8 = new String[0];
@@ -137,7 +137,7 @@ public class ClassBandsTest extends AbstractBandsTest {
     }
 
     @Test
-    public void testWithMethods() throws Pack200Exception, IOException {
+    void testWithMethods() throws Pack200Exception, IOException {
         cpClasses = new String[] { "Class1", "Class2", "Class3" };
         cpDescriptor = new String[] { "method1", "method2", "method3" };
         cpUTF8 = new String[0];

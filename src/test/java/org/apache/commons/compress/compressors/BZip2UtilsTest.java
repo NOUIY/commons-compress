@@ -25,11 +25,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.apache.commons.compress.compressors.bzip2.BZip2Utils;
 import org.junit.jupiter.api.Test;
 
-public class BZip2UtilsTest {
+class BZip2UtilsTest {
 
     @SuppressWarnings("deprecation")
     @Test
-    public void testGetCompressedFilename() {
+    void testGetCompressedFilename() {
         assertEquals(".bz2", BZip2Utils.getCompressedFilename(""));
         assertEquals(".bz2", BZip2Utils.getCompressedFileName(""));
         assertEquals(" .bz2", BZip2Utils.getCompressedFilename(" "));
@@ -46,7 +46,7 @@ public class BZip2UtilsTest {
 
     @SuppressWarnings("deprecation")
     @Test
-    public void testGetUncompressedFilename() {
+    void testGetUncompressedFilename() {
         assertEquals("", BZip2Utils.getUncompressedFilename(""));
         assertEquals("", BZip2Utils.getUncompressedFileName(""));
         assertEquals(".bz2", BZip2Utils.getUncompressedFilename(".bz2"));
@@ -78,7 +78,7 @@ public class BZip2UtilsTest {
 
     @SuppressWarnings("deprecation")
     @Test
-    public void testIsCompressedFilename() {
+    void testIsCompressedFilename() {
         assertFalse(BZip2Utils.isCompressedFilename(""));
         assertFalse(BZip2Utils.isCompressedFileName(""));
         assertFalse(BZip2Utils.isCompressedFilename(".gz"));

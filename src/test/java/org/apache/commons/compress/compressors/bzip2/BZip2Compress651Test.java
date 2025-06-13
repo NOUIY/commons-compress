@@ -34,10 +34,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests https://issues.apache.org/jira/browse/COMPRESS-651
  */
-public class BZip2Compress651Test {
+class BZip2Compress651Test {
 
     @Test
-    public void testCompress651() throws IOException {
+    void testCompress651() throws IOException {
         final int buffersize = 102_400;
         final Path pathIn = Paths.get("src/test/resources/org/apache/commons/compress/COMPRESS-651/my10m.tar.bz2");
         final Path pathOut = Paths.get("target/COMPRESS-651/test.tar");

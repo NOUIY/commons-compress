@@ -29,7 +29,7 @@ import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ListerTest {
+class ListerTest {
 
     /**
      * Creates a stream of paths of test fixtures with file names that don't end with {@code "-fail"} for specific file extensions.
@@ -43,7 +43,7 @@ public class ListerTest {
 
     @ParameterizedTest
     @MethodSource("getFixtures")
-    public void testMain(final Path path) throws ArchiveException, IOException {
+    void testMain(final Path path) throws ArchiveException, IOException {
         new Lister(true, path.toString()).go();
     }
 }

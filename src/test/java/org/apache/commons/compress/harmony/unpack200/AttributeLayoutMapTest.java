@@ -26,10 +26,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.apache.commons.compress.harmony.pack200.Pack200Exception;
 import org.junit.jupiter.api.Test;
 
-public class AttributeLayoutMapTest {
+class AttributeLayoutMapTest {
 
     @Test
-    public void testRepeatable() throws Pack200Exception {
+    void testRepeatable() throws Pack200Exception {
         // Check we can retrieve a default layout
         final AttributeLayoutMap a = new AttributeLayoutMap();
         AttributeLayout layout = a.getAttributeLayout("SourceFile", AttributeLayout.CONTEXT_CLASS);

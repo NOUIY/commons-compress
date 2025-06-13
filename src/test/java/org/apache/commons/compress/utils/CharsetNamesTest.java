@@ -28,10 +28,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests {@link CharsetNames}.
  */
-public class CharsetNamesTest {
+class CharsetNamesTest {
 
     @Test
-    public void testConstants() {
+    void testConstants() {
         assertEquals(StandardCharsets.ISO_8859_1.name(), CharsetNames.ISO_8859_1);
         assertEquals(StandardCharsets.US_ASCII.name(), CharsetNames.US_ASCII);
         assertEquals(StandardCharsets.UTF_16.name(), CharsetNames.UTF_16);

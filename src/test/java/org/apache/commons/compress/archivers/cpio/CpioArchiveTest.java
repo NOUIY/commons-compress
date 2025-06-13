@@ -33,7 +33,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class CpioArchiveTest {
+class CpioArchiveTest {
 
     public static Stream<Arguments> factory() {
         return Stream.of(Arguments.of(CpioConstants.FORMAT_NEW), Arguments.of(CpioConstants.FORMAT_NEW_CRC), Arguments.of(CpioConstants.FORMAT_OLD_ASCII),
@@ -41,7 +41,7 @@ public class CpioArchiveTest {
     }
 
     @Test
-    public void utf18RoundtripTestCtor2() throws Exception {
+    void utf18RoundtripTestCtor2() throws Exception {
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             try (CpioArchiveOutputStream os = new CpioArchiveOutputStream(baos, StandardCharsets.UTF_8.name())) {
                 final CpioArchiveEntry entry = new CpioArchiveEntry("Test.txt", 4);

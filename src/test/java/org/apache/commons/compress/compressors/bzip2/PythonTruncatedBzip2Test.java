@@ -41,7 +41,7 @@ import org.junit.jupiter.api.Test;
  *
  * @see "https://issues.apache.org/jira/browse/COMPRESS-253"
  */
-public class PythonTruncatedBzip2Test {
+class PythonTruncatedBzip2Test {
 
     // @formatter:off
     private static final String TEXT = "root:x:0:0:root:/root:/bin/bash\nbin:x:1:1:bin:/bin:\ndaemon:x:2:2:daemon:/sbin:\nadm:x:3:4:adm:/var/adm:\nlp:x:4:7:"
@@ -88,7 +88,7 @@ public class PythonTruncatedBzip2Test {
     }
 
     @Test
-    public void testPartialReadTruncatedData() throws IOException {
+    void testPartialReadTruncatedData() throws IOException {
         // with BZ2File(self.filename) as f:
         // self.assertEqual(f.read(len(self.TEXT)), self.TEXT)
         // self.assertRaises(EOFError, f.read, 1)
@@ -105,7 +105,7 @@ public class PythonTruncatedBzip2Test {
     }
 
     @Test
-    public void testTruncatedData() {
+    void testTruncatedData() {
         // with BZ2File(self.filename) as f:
         // self.assertRaises(EOFError, f.read)
         final ByteBuffer buffer = ByteBuffer.allocate(8192);

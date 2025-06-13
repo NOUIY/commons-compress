@@ -46,7 +46,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ArchiveTest extends AbstractTempDirTest {
+class ArchiveTest extends AbstractTempDirTest {
 
     @SuppressWarnings("resource") // Caller closes
     static Stream<Arguments> loadMultipleJars() throws URISyntaxException, IOException {
@@ -100,7 +100,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testAlternativeConstructor() throws IOException, URISyntaxException, Pack200Exception {
+    void testAlternativeConstructor() throws IOException, URISyntaxException, Pack200Exception {
         final File file = createTempFile("sql", ".pack.gz");
         try (JarInputStream inStream = new JarInputStream(new FileInputStream(new File(Archive.class.getResource("/pack200/sqlUnpacked.jar").toURI())));
                 FileOutputStream out = new FileOutputStream(file);) {
@@ -109,7 +109,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testAnnotations() throws IOException, Pack200Exception, URISyntaxException {
+    void testAnnotations() throws IOException, Pack200Exception, URISyntaxException {
         final File file = createTempFile("annotations", ".pack");
         try (JarFile in = new JarFile(new File(Archive.class.getResource("/pack200/annotationsUnpacked.jar").toURI()));
                 FileOutputStream out = new FileOutputStream(file)) {
@@ -131,7 +131,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testAnnotations2() throws IOException, Pack200Exception, URISyntaxException {
+    void testAnnotations2() throws IOException, Pack200Exception, URISyntaxException {
         final File file = createTempFile("annotations", ".pack");
         try (JarFile in = new JarFile(new File(Archive.class.getResource("/pack200/annotations.jar").toURI()));
                 FileOutputStream out = new FileOutputStream(file)) {
@@ -155,7 +155,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testHelloWorld() throws IOException, Pack200Exception, URISyntaxException {
+    void testHelloWorld() throws IOException, Pack200Exception, URISyntaxException {
         final File file = createTempFile("helloworld", ".pack.gz");
         try (JarFile in = new JarFile(new File(Archive.class.getResource("/pack200/hw.jar").toURI()));
                 FileOutputStream out = new FileOutputStream(file);) {
@@ -199,7 +199,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testJNDI() throws IOException, Pack200Exception, URISyntaxException {
+    void testJNDI() throws IOException, Pack200Exception, URISyntaxException {
         final File file = createTempFile("jndi", ".pack");
         try (JarFile in = new JarFile(new File(Archive.class.getResource("/pack200/jndi.jar").toURI()))) {
             try (FileOutputStream out = new FileOutputStream(file)) {
@@ -223,7 +223,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testLargeClass() throws IOException, Pack200Exception, URISyntaxException {
+    void testLargeClass() throws IOException, Pack200Exception, URISyntaxException {
         final File file = createTempFile("largeClass", ".pack");
         try (JarFile in = new JarFile(new File(Archive.class.getResource("/pack200/largeClassUnpacked.jar").toURI()));
                 FileOutputStream out = new FileOutputStream(file)) {
@@ -249,7 +249,7 @@ public class ArchiveTest extends AbstractTempDirTest {
 
     @ParameterizedTest
     @MethodSource("loadMultipleJars")
-    public void testMultipleJars(final Path path) throws IOException, Pack200Exception {
+    void testMultipleJars(final Path path) throws IOException, Pack200Exception {
         final File file = createTempFile("temp", ".pack.gz");
         final File inputFile = path.toFile();
         try (JarFile in = new JarFile(inputFile);
@@ -261,7 +261,7 @@ public class ArchiveTest extends AbstractTempDirTest {
     }
 
     @Test
-    public void testSQL() throws IOException, Pack200Exception, URISyntaxException {
+    void testSQL() throws IOException, Pack200Exception, URISyntaxException {
         final File file = createTempFile("sql", ".pack");
         try (JarFile in = new JarFile(new File(Archive.class.getResource("/pack200/sqlUnpacked.jar").toURI()));
                 FileOutputStream out = new FileOutputStream(file)) {
@@ -287,7 +287,7 @@ public class ArchiveTest extends AbstractTempDirTest {
 
     // Test with an archive containing Annotations
     @Test
-    public void testWithAnnotations2() throws Exception {
+    void testWithAnnotations2() throws Exception {
         final File file = createTempFile("annotations", ".jar");
         try (InputStream input = Archive.class.getResourceAsStream("/pack200/annotationsRI.pack.gz");
                 JarOutputStream jout = new JarOutputStream(new FileOutputStream(file))) {

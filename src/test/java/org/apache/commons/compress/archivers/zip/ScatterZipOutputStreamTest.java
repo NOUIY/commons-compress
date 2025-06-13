@@ -32,14 +32,14 @@ import org.apache.commons.compress.parallel.InputStreamSupplier;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
-public class ScatterZipOutputStreamTest extends AbstractTempDirTest {
+class ScatterZipOutputStreamTest extends AbstractTempDirTest {
 
     private InputStreamSupplier createPayloadSupplier(final ByteArrayInputStream payload) {
         return () -> payload;
     }
 
     @Test
-    public void testPutArchiveEntry() throws Exception {
+    void testPutArchiveEntry() throws Exception {
         final File scatterFile = createTempFile("scattertest", ".notzip");
         final File target = createTempFile("scattertest", ".zip");
         final byte[] B_PAYLOAD = "RBBBBBBS".getBytes();

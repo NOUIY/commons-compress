@@ -32,10 +32,10 @@ import java.nio.file.Files;
 
 import org.junit.jupiter.api.Test;
 
-public class EncryptedArchiveTest {
+class EncryptedArchiveTest {
 
     @Test
-    public void testReadPasswordEncryptedEntryViaStream() throws IOException {
+    void testReadPasswordEncryptedEntryViaStream() throws IOException {
         final File file = getFile("password-encrypted.zip");
         try (ZipArchiveInputStream zin = new ZipArchiveInputStream(Files.newInputStream(file.toPath()))) {
             final ZipArchiveEntry zae = zin.getNextZipEntry();
@@ -52,7 +52,7 @@ public class EncryptedArchiveTest {
     }
 
     @Test
-    public void testReadPasswordEncryptedEntryViaZipFile() throws IOException {
+    void testReadPasswordEncryptedEntryViaZipFile() throws IOException {
         try (ZipFile zf = ZipFile.builder().setFile(getFile("password-encrypted.zip")).get()) {
             final ZipArchiveEntry zae = zf.getEntry("LICENSE.txt");
             assertTrue(zae.getGeneralPurposeBit().usesEncryption());

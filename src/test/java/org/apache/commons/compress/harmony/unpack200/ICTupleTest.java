@@ -27,7 +27,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ICTupleTest {
+class ICTupleTest {
 
     static Stream<Arguments> explicit() {
         return Stream.of(Arguments.of("Foo$$2$Local", null, "$2$Local", "$2$Local", "Foo$$2"),
@@ -43,7 +43,7 @@ public class ICTupleTest {
 
     @ParameterizedTest
     @MethodSource("explicit")
-    public void testExplicitClassTupleParsing(final String c, final String c2, final String n, final String expectedSimpleClassName,
+    void testExplicitClassTupleParsing(final String c, final String c2, final String n, final String expectedSimpleClassName,
             final String expectedOuterClass) {
         final IcTuple tuple = new IcTuple(c, IcTuple.NESTED_CLASS_FLAG, c2, n, -1, -1, -1, -1);
         assertEquals(expectedSimpleClassName, tuple.simpleClassName());
@@ -52,7 +52,7 @@ public class ICTupleTest {
 
     @ParameterizedTest
     @MethodSource("predicted")
-    public void testPredictedClassTupleParsing(final String c, final String expectedSimpleClass, final String expectedOuterClass) {
+    void testPredictedClassTupleParsing(final String c, final String expectedSimpleClass, final String expectedOuterClass) {
         final IcTuple tuple = new IcTuple(c, 0, null, null, -1, -1, -1, -1);
         assertEquals(expectedSimpleClass, tuple.simpleClassName());
         assertEquals(expectedOuterClass, tuple.outerClassString());
