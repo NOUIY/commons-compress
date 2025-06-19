@@ -31,7 +31,7 @@ import java.nio.file.Files;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
-public class XZCompressorInputStreamTest {
+class XZCompressorInputStreamTest {
     private void multiByteReadConsistentlyReturnsMinusOneAtEof(final boolean decompressConcatenated) throws IOException {
         final File input = getFile("bla.tar.xz");
         final byte[] buf = new byte[2];
@@ -54,17 +54,17 @@ public class XZCompressorInputStreamTest {
     }
 
     @Test
-    public void testMultiByteReadConsistentlyReturnsMinusOneAtEofDecompressConcatenated() throws IOException {
+    void testMultiByteReadConsistentlyReturnsMinusOneAtEofDecompressConcatenated() throws IOException {
         multiByteReadConsistentlyReturnsMinusOneAtEof(true);
     }
 
     @Test
-    public void testMultiByteReadConsistentlyReturnsMinusOneAtEofNoDecompressConcatenated() throws IOException {
+    void testMultiByteReadConsistentlyReturnsMinusOneAtEofNoDecompressConcatenated() throws IOException {
         multiByteReadConsistentlyReturnsMinusOneAtEof(false);
     }
 
     @Test
-    public void testRedundantTestOfAlmostDeprecatedMatchesMethod() {
+    void testRedundantTestOfAlmostDeprecatedMatchesMethod() {
         final byte[] data = { (byte) 0xFD, '7', 'z', 'X', 'Z', '\0' };
         assertFalse(XZCompressorInputStream.matches(data, 5));
         assertTrue(XZCompressorInputStream.matches(data, 6));
@@ -74,12 +74,12 @@ public class XZCompressorInputStreamTest {
     }
 
     @Test
-    public void testSingleByteReadConsistentlyReturnsMinusOneAtEofDecompressConcatenated() throws IOException {
+    void testSingleByteReadConsistentlyReturnsMinusOneAtEofDecompressConcatenated() throws IOException {
         singleByteReadConsistentlyReturnsMinusOneAtEof(true);
     }
 
     @Test
-    public void testSingleByteReadConsistentlyReturnsMinusOneAtEofNoDecompressConcatenated() throws IOException {
+    void testSingleByteReadConsistentlyReturnsMinusOneAtEofNoDecompressConcatenated() throws IOException {
         singleByteReadConsistentlyReturnsMinusOneAtEof(false);
     }
 

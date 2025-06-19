@@ -38,7 +38,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 /**
  * Tests COMPRESS-686.
  */
-public class Compress686Test {
+class Compress686Test {
 
     @TempDir
     private Path tempDir;
@@ -68,7 +68,7 @@ public class Compress686Test {
 
     @ParameterizedTest
     @ValueSource(booleans = { true, false })
-    public void testRoundtrip(final boolean bufferCompressOutput) throws Exception {
+    void testRoundtrip(final boolean bufferCompressOutput) throws Exception {
         final Path file = tempDir.resolve("test.txt");
         final String contents = "a";
         try (Writer w = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {

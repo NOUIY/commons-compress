@@ -49,7 +49,7 @@ import org.junit.jupiter.params.provider.MethodSource;
  *
  * Files must be in resources/longpath, and there must be a file.txt containing the list of files in the archives.
  */
-public class LongPathTest extends AbstractTest {
+class LongPathTest extends AbstractTest {
 
     private static final ClassLoader CLASS_LOADER = LongPathTest.class.getClassLoader();
     private static final File ARC_DIR;
@@ -99,7 +99,7 @@ public class LongPathTest extends AbstractTest {
 
     @ParameterizedTest
     @MethodSource("data")
-    public void testArchive(final File file) throws Exception {
+    void testArchive(final File file) throws Exception {
         @SuppressWarnings("unchecked") // fileList is of correct type
         final ArrayList<String> expected = (ArrayList<String>) FILE_LIST.clone();
         final String name = file.getName();

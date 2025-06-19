@@ -55,7 +55,7 @@ import shaded.org.apache.commons.io.IOUtils;
 /**
  * Tests {@link GzipCompressorOutputStream}.
  */
-public class GzipCompressorOutputStreamTest {
+class GzipCompressorOutputStreamTest {
 
     private static final String EXPECTED_BASE_NAME = "\u6D4B\u8BD5\u4E2D\u6587\u540D\u79F0";
     private static final String EXPECTED_FILE_NAME = EXPECTED_BASE_NAME + ".xml";
@@ -108,7 +108,7 @@ public class GzipCompressorOutputStreamTest {
      * @throws IOException When the test fails.
      */
     @Test
-    public void testChineseFileNameGBK() throws IOException {
+    void testChineseFileNameGBK() throws IOException {
         assumeTrue(Charset.isSupported("GBK"));
         testChineseFileName(EXPECTED_FILE_NAME, EXPECTED_FILE_NAME, Charset.forName("GBK"));
     }
@@ -119,7 +119,7 @@ public class GzipCompressorOutputStreamTest {
      * @throws IOException When the test fails.
      */
     @Test
-    public void testChineseFileNameUTF8() throws IOException {
+    void testChineseFileNameUTF8() throws IOException {
         testChineseFileName(EXPECTED_FILE_NAME, EXPECTED_FILE_NAME, StandardCharsets.UTF_8);
     }
 
@@ -141,7 +141,7 @@ public class GzipCompressorOutputStreamTest {
         "2, 32763, false"
     })
     // @formatter:on
-    public void testExtraSubfields(final int subFieldCount, final Integer payloadSize, final boolean shouldFail)
+    void testExtraSubfields(final int subFieldCount, final Integer payloadSize, final boolean shouldFail)
             throws IOException {
         final Path tempSourceFile = Files.createTempFile("test_gzip_extra_", ".txt");
         final Path targetFile = Files.createTempFile("test_gzip_extra_", ".txt.gz");
@@ -197,7 +197,7 @@ public class GzipCompressorOutputStreamTest {
     }
 
     @Test
-    public void testExtraSubfieldsEmpty() {
+    void testExtraSubfieldsEmpty() {
         final ExtraField extra = new ExtraField();
         assertEquals(0, extra.toByteArray().length);
         assertFalse(extra.iterator().hasNext());
@@ -227,7 +227,7 @@ public class GzipCompressorOutputStreamTest {
     }
 
     @Test
-    public void testFileNameAscii() throws IOException {
+    void testFileNameAscii() throws IOException {
         testFileName("ASCII.xml", "ASCII.xml");
     }
 
@@ -239,7 +239,7 @@ public class GzipCompressorOutputStreamTest {
      * @throws IOException When the test fails.
      */
     @Test
-    public void testFileNameChinesePercentEncoded() throws IOException {
+    void testFileNameChinesePercentEncoded() throws IOException {
         // "Test Chinese name"
         testFileName("??????.xml", EXPECTED_FILE_NAME);
     }
@@ -250,7 +250,7 @@ public class GzipCompressorOutputStreamTest {
      * @throws IOException When the test has issues with the underlying file system or unexpected gzip operations.
      */
     @Test
-    public void testHeaderCrc() throws IOException, DecoderException {
+    void testHeaderCrc() throws IOException, DecoderException {
         final GzipParameters parameters = new GzipParameters();
         parameters.setHeaderCRC(true);
         parameters.setModificationTime(0x66554433); // avoid changing time

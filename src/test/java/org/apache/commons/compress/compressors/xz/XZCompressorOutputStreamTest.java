@@ -32,10 +32,10 @@ import org.junit.jupiter.api.Test;
  *
  * @see XZCompressorOutputStream
  */
-public class XZCompressorOutputStreamTest {
+class XZCompressorOutputStreamTest {
 
     @Test
-    public void testWrite() throws IOException {
+    void testWrite() throws IOException {
 
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(4590);
         try (XZCompressorOutputStream xZCompressorOutputStream = new XZCompressorOutputStream(byteArrayOutputStream)) {

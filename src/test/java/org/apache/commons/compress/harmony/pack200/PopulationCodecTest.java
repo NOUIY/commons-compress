@@ -31,7 +31,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class PopulationCodecTest {
+class PopulationCodecTest {
 
     static Stream<Arguments> populationCodec() {
         return Stream.of(Arguments.of(new byte[] { 4, 5, 6, 4, 2, 1, 3, 0, 7 }, new long[] { 5, 4, 6, 7 }, Codec.BYTE1),
@@ -49,7 +49,7 @@ public class PopulationCodecTest {
     }
 
     @Test
-    public void testEncodeSingleValue() {
+    void testEncodeSingleValue() {
         assertThrows(Pack200Exception.class, () -> new PopulationCodec(Codec.SIGNED5, Codec.SIGNED5, Codec.UDELTA5).encode(5),
                 "Should not allow a single value to be encoded as we don't know which codec to use");
         assertThrows(Pack200Exception.class, () -> new PopulationCodec(Codec.SIGNED5, Codec.SIGNED5, Codec.UDELTA5).encode(5, 8),
@@ -58,7 +58,7 @@ public class PopulationCodecTest {
 
     @ParameterizedTest
     @MethodSource("populationCodec")
-    public void testPopulationCodec(final byte[] data, final long[] expectedResult, final Codec codec) throws IOException, Pack200Exception {
+    void testPopulationCodec(final byte[] data, final long[] expectedResult, final Codec codec) throws IOException, Pack200Exception {
         try (InputStream in = new ByteArrayInputStream(data)) {
             final int[] result = new PopulationCodec(codec, codec, codec).decodeInts(expectedResult.length, in);
             assertEquals(expectedResult.length, result.length);

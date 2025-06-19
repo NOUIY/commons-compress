@@ -29,10 +29,10 @@ import org.junit.jupiter.api.Test;
 /**
  * Sanity checks for {@link Charsets}.
  */
-public class CharsetsTest {
+class CharsetsTest {
 
     @Test
-    public void testToCharset() {
+    void testToCharset() {
         assertEquals(Charset.defaultCharset(), Charsets.toCharset((String) null));
         assertEquals(Charset.defaultCharset(), Charsets.toCharset((Charset) null));
         assertEquals(Charset.defaultCharset(), Charsets.toCharset(Charset.defaultCharset()));

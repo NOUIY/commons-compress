@@ -29,7 +29,7 @@ import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.apache.commons.lang3.stream.Streams;
 import org.junit.jupiter.api.Test;
 
-public class ExpandApkTest {
+class ExpandApkTest {
 
     private <T> T println(final T object) {
         // System.out.println(object);
@@ -37,7 +37,7 @@ public class ExpandApkTest {
     }
 
     @Test
-    public void test() throws IOException {
+    void test() throws IOException {
         Streams.failableStream(
                 PathUtils.walk(Paths.get("src/test/resources/android"), new SuffixFileFilter("." + ArchiveStreamFactory.APK, IOCase.INSENSITIVE), 100, false))
                 .forEach(path -> new Expander().expand(ArchiveStreamFactory.APK, println(path), null));

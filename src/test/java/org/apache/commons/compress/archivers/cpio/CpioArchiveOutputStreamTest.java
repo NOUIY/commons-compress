@@ -28,10 +28,10 @@ import java.nio.file.Files;
 import org.apache.commons.compress.AbstractTest;
 import org.junit.jupiter.api.Test;
 
-public class CpioArchiveOutputStreamTest extends AbstractTest {
+class CpioArchiveOutputStreamTest extends AbstractTest {
 
     @Test
-    public void testWriteOldBinary() throws Exception {
+    void testWriteOldBinary() throws Exception {
         final File file = getFile("test1.xml");
         final File output = newTempFile("test.cpio");
         final CpioArchiveOutputStream ref;

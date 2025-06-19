@@ -32,10 +32,10 @@ import org.junit.Test;
 /**
  * Tests https://issues.apache.org/jira/browse/COMPRESS-699
  */
-public class Compress699Test {
+class Compress699Test {
 
     @Test
-    public void testTarArchive() throws Exception {
+    void testTarArchive() throws Exception {
         final Path fileToTest = Paths.get("src/test/resources/org/apache/commons/compress/COMPRESS-699/icure_medical_device_dart_sdk-1.2.10.tar");
         try (BufferedInputStream fileInputStream = new BufferedInputStream(Files.newInputStream(fileToTest))) {
             assertEquals(ArchiveStreamFactory.TAR, ArchiveStreamFactory.detect(fileInputStream));

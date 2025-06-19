@@ -23,10 +23,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
-public class OsgiUtilsTest {
+class OsgiUtilsTest {
 
     @Test
-    public void testDetectsItIsNotRunningInsideOsgiEnv() {
+    void testDetectsItIsNotRunningInsideOsgiEnv() {
         assertFalse(OsgiUtils.isRunningInOsgiEnvironment());
     }
 

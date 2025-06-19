@@ -26,7 +26,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ByteCodeTest {
+class ByteCodeTest {
 
     static Stream<Arguments> byteCode() {
         return Stream.of(Arguments.of(0, "nop"), Arguments.of(-79, "return"), Arguments.of(177, "return"));
@@ -34,7 +34,7 @@ public class ByteCodeTest {
 
     @ParameterizedTest
     @MethodSource("byteCode")
-    public void testByteCode(final int opCode, final String expectedName) {
+    void testByteCode(final int opCode, final String expectedName) {
         assertEquals(expectedName, ByteCode.getByteCode(opCode).getName());
     }
 }

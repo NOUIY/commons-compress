@@ -25,10 +25,10 @@ import java.util.zip.ZipException;
 import org.apache.commons.compress.archivers.zip.JarMarker;
 import org.junit.jupiter.api.Test;
 
-public class JarMarkerTest {
+class JarMarkerTest {
 
     @Test
-    public void testJarMarkerLengthCheck() {
+    void testJarMarkerLengthCheck() {
         assertThrows(ZipException.class, () -> JarMarker.getInstance().parseFromLocalFileData(null, 0, 1));
     }
 
